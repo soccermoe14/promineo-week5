@@ -31,7 +31,7 @@ class PersonalDiet {
 class Menu {
 //creating a menu that will allow user to create grocery list, add items, delete items, and view grocery list
     constructor () {
-        this.foods = [];
+        this.names = [];//list of of the grocery list names that exist
         this.groceryList = null;
     }
     start() {
@@ -52,8 +52,22 @@ class Menu {
                     break;
                 case '5':
                     selection = 0;
-            }
+                }
             alert ("Sorry, no food for you!");//this runs if user selects 0 (wonder if I could have just made this a default statement???)
         }
+        showMainMenuOptions(){//creating the list of prompts that will be displayed on console
+            return prompt (`
+            0) Exit
+            1) Create New Grocery List
+            2) View Grocery List
+            3) Delete Grocery List
+            4) Display Grocery List
+            `)
+        }//GO BACK AND DOUBLE CHECK EVERYTHING ABOVE AND ADD MORE NOTES -- THIS IS YOUR STOPPING POINT FOR THE NIGHT!!!
+            display GroceryLists () {
+                let 
+            }
+            }
+        })
     }
 }
