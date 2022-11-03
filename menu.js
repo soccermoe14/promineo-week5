@@ -55,7 +55,7 @@ class Menu {
                 }
             alert ("Sorry, no food for you!");//this runs if user selects 0 (wonder if I could have just made this a default statement???)
         }
-        showMainMenuOptions(); //creating the list of prompts that will be displayed on console
+        showMainMenuOptions(); {//creating the list of prompts that will be displayed on console
             return prompt (`
             0) Exit
             1) Create New Grocery List
@@ -63,9 +63,11 @@ class Menu {
             3) Delete Grocery List
             4) Display Grocery Lists
             `)
-        }//GO BACK AND DOUBLE CHECK EVERYTHING ABOVE AND ADD MORE NOTES -- THIS IS YOUR STOPPING POINT FOR THE NIGHT!!!
-          
-            displayGroceryLists() {//create a blank string
+        }
+    }
+        
+
+        displayGroceryLists() { 
                 let groceryListString = ' ';
                 for (let i = 0; i , this.groceryList.length; i++) {
                     groceryListString += i + ') ' + this.groceryLists[i].food + '\n';
@@ -80,12 +82,26 @@ class Menu {
                 let index = prompt ('Enter the index of the grocery list you wish to view:');
                 if (index > -1 && index < this.groceryLists.length) {//validates user input so we don't get an error if input is < 0 or > grocery list array
                     this.selectedGroceryList = this.groceryLists[index];
-                    let description = 'This is' + this.selectedGroceryList's grocery list' + '\n';
-                }
+                    let description = 'This is' + this.selectedGroceryList + '\n';
 
+                    for (let i = 0; i < this.selectedGroceryList.foods.length; i++) {
+                        description += i + ') ' + this.selectedGroceryList.foods[i].name + ' - ' 
+                            + this,this.selectedGroceryList.foods[i],position + '\n';//this will build the list of foods on the grocery list
+                    }
+                let selection = this.showGroceryMenuOptions(description);//this still need to be built. Will pass in description of 
+                //grocery list to show grocery menu options and implement showGroceryMenu OPtions to diplay the groceries
+                        switch (selection) {
+                            case '1':
+                                this.createFood();
+                                break;
+                            case '2':
+                                this.deleteFood(); 
+                        }
+
+                }
             }
-              
-            }
-        }
-    }
 }
+let menu = new Menu();
+menu.start();
+
+//NEED TO GO BACK ANS ADD MY SHOW GROCERY MENU OPTIONS WHERE I CAN ADD FOOD ITEMS
