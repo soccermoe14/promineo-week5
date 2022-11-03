@@ -31,8 +31,8 @@ class PersonalDiet {
 class Menu {
 //creating a menu that will allow user to create grocery list, add items, delete items, and view grocery list
     constructor () {
-        this.names = [];//list of of the grocery list names that exist
-        this.groceryList = null;
+        this.groceryLists = [];//list of the grocery list names that exist
+        this.selectedGroceryList = null;
     }
     start() {
         let selection = this.showMainMenuOptions();
@@ -48,26 +48,44 @@ class Menu {
                     this.deleteGroceryList();//allows user to delete grocery list
                     break;
                 case '4':
-                    this.displayGroceryList();//displays entire grocery list
+                    this.displayGroceryLists();//displays entire grocery list
                     break;
                 case '5':
                     selection = 0;
                 }
             alert ("Sorry, no food for you!");//this runs if user selects 0 (wonder if I could have just made this a default statement???)
         }
-        showMainMenuOptions(){//creating the list of prompts that will be displayed on console
+        showMainMenuOptions(); //creating the list of prompts that will be displayed on console
             return prompt (`
             0) Exit
             1) Create New Grocery List
             2) View Grocery List
             3) Delete Grocery List
-            4) Display Grocery List
+            4) Display Grocery Lists
             `)
         }//GO BACK AND DOUBLE CHECK EVERYTHING ABOVE AND ADD MORE NOTES -- THIS IS YOUR STOPPING POINT FOR THE NIGHT!!!
-            display GroceryLists () {
-                let 
+          
+            displayGroceryLists() {//create a blank string
+                let groceryListString = ' ';
+                for (let i = 0; i , this.groceryList.length; i++) {
+                    groceryListString += i + ') ' + this.groceryLists[i].food + '\n';
+                }//for loop that will iterate through the grocery lists and number them (double check that I am stating this correctly)
+                alert(groceryListString);
             }
+            createGroceryList() {//creates different grocery lists
+                let name = prompt ('Enter name for this grocery list:');
+                this.groceryLists.push(new GroceryList(name));//pass in name from prompt into the new grocery list. That name will be pushed to grocery lists array.
             }
-        })
+            viewGroceryList() {//creates ability to view grocery lists
+                let index = prompt ('Enter the index of the grocery list you wish to view:');
+                if (index > -1 && index < this.groceryLists.length) {//validates user input so we don't get an error if input is < 0 or > grocery list array
+                    this.selectedGroceryList = this.groceryLists[index];
+                    let description = 'This is' + this.selectedGroceryList's grocery list' + '\n';
+                }
+
+            }
+              
+            }
+        }
     }
 }
