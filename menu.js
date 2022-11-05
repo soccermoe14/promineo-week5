@@ -4,10 +4,10 @@
 •	Your menu should have the options to create, view, and delete elements.
 */
 
-class Groceries {
+class Food {
     constructor (food, macronutrient) {
         this.food = food;
-        this.macronutrient = macronutrient;
+        this.macronutrient = macronutrient
     }
 //creates a class that contains food types and macronutrient for that food type
     describe() {
@@ -16,32 +16,11 @@ class Groceries {
 //returns a string (ex: bread is a carbohydrate)
 }
 
-
-class PersonalList {
-    constructor (name, food) {
-        this.name = name;
-        this.foods = [];
-    }
-//creates a class with names so we can have grocery lists for different people
-    addFood(food) {
-        if (food instanceof Foods) {
-            this.groceryList.push(Foods);
-        } else {
-            throw new Error("Nope, can't do that!");
-        }
-//adds a new food type to our list
-    }
-    describe() {
-        return `${this.name}'s grocery list has ${this.groceryList.length} items.`;
-    }
-//returns a string (ex: Marin's grocery list has 10 items)
-}
-
 class Menu {
 //creating a menu that will allow user to create grocery list, add foods, delete foods, add macronutrient of food type, and view grocery list
     constructor () {
-        this.foods = [];
-        this.macronutrients = [];
+        this.food = [];
+        this.macronutrient = [];
         this.selectedFood = null;
     }
     start() {
@@ -57,9 +36,6 @@ class Menu {
                 case '3':
                     this.deleteFood();//allows user to delete grocery list
                     break;
-                case '4':
-                    this.displayFoods();//displays entire grocery list
-                    break;
                 default: selection = 0;
                 }
             selection = this.showMainMenuOptions;
@@ -69,73 +45,34 @@ class Menu {
         showMainMenuOptions() {
             return prompt (`
             0) Exit
-            1) Create New Food
+            1) Add Food
             2) View Food
             3) Delete Food
-            4) Display Foods
          `)
         }
         
-        showGroceryMenuOptions(foodInfo) {
-            return prompt (`
-            0) Back
-            1) Add Grocery List
-            2) Delete Grocery List
-            -------------------------------
-            ${foodInfo}
-            `)
-        }
-
-        displayFoods() {
-            let foodString = " ";
-            for (let i = 0; i < this.foods.length; i++) {
-                foodString += i + " " + ") " + this.foods[i].name + "\n";
-            }
-            alert(foodString);
-        }
-        addFood() {
-            let food = prompt("Add food type.");
-            let macronutrient = prompt("Add macronutrient type.");
-            this.foods.push(new Foods(name, macronutrient));
+        addFood(food) {
+        if (food instanceof Food) {
+            this.food.push(food);
+        } else {
+            throw new error (`Can't do that!`);
         }
 
         viewFood() {
-            let index = prompt("Enter number to view food.");
+           let index = prompt("Enter # of you food you want to view");
             if (index > -1 && index < this.foods.length) {
                 this.selectedFood = this.foods[index];
                 let description = `Food Name: ${this.selectedFood.name} is a ${this.selectedMacronutrient.name}`;
-                let selection = this.showGroceryMenuOptions
-                (description);
-                switch (selection) {
-                    case '1':
-                        this.addGroceryList();
-                        break:
-                    case '2':
-                        this.removeGroceryList();
-                        
+                                      
                 }
             }
-        }
-
         deleteFood() {
-            let index = prompt("Enter numnber of food to delet.");
+            let index = prompt("Enter numnber of food to delete.");
             if (index > -1 && index < this.foods.length) {
-                this.foods.splice(index, 1);
-            }
+            this.food.splice(index, 1);
         }
-
-        addGroceryList() {
-            let name = prompt("Enter name of grocery list.");
-            this.selectedFood.groceryList.push(new GroceryList(name));
-        }
-
-        removeGroceryList() {
-            let index = prompt("Enter number of grocery list to remove.");
-            if (index > -1 && < globalThis.selectedFood.groceryLists.length) {
-                this.selectedFood.groceryLists.splice(index, 1);
-            }
-        }
+        
     }
-
-    let menu = new Menu();
-    menu.start();
+}
+let menu = new Menu();
+menu.start();
