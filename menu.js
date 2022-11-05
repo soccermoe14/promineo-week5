@@ -86,4 +86,56 @@ class Menu {
             `)
         }
 
-        
+        displayFoods() {
+            let foodString = " ";
+            for (let i = 0; i < this.foods.length; i++) {
+                foodString += i + " " + ") " + this.foods[i].name + "\n";
+            }
+            alert(foodString);
+        }
+        addFood() {
+            let food = prompt("Add food type.");
+            let macronutrient = prompt("Add macronutrient type.");
+            this.foods.push(new Foods(name, macronutrient));
+        }
+
+        viewFood() {
+            let index = prompt("Enter number to view food.");
+            if (index > -1 && index < this.foods.length) {
+                this.selectedFood = this.foods[index];
+                let description = `Food Name: ${this.selectedFood.name} is a ${this.selectedMacronutrient.name}`;
+                let selection = this.showGroceryMenuOptions
+                (description);
+                switch (selection) {
+                    case '1':
+                        this.addGroceryList();
+                        break:
+                    case '2':
+                        this.removeGroceryList();
+                        
+                }
+            }
+        }
+
+        deleteFood() {
+            let index = prompt("Enter numnber of food to delet.");
+            if (index > -1 && index < this.foods.length) {
+                this.foods.splice(index, 1);
+            }
+        }
+
+        addGroceryList() {
+            let name = prompt("Enter name of grocery list.");
+            this.selectedFood.groceryList.push(new GroceryList(name));
+        }
+
+        removeGroceryList() {
+            let index = prompt("Enter number of grocery list to remove.");
+            if (index > -1 && < globalThis.selectedFood.groceryLists.length) {
+                this.selectedFood.groceryLists.splice(index, 1);
+            }
+        }
+    }
+
+    let menu = new Menu();
+    menu.start();
